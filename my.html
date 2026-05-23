@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My First Calculator</title>
+    <div class="calculator-box">
+        <h2 style="margin-bottom: 15px; color: #333;">My First Calculator</h2>
+
+    <style>
+        /* This centers the calculator on your screen */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            font-family: Arial, sans-serif;
+        }
+
+        /* This is the box around the calculator */
+        .calculator-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* This is the white screen where numbers show up */
+        .screen {
+            width: 90%;
+            height: 50px;
+            font-size: 24px;
+            text-align: right;
+            padding: 5px;
+            margin-bottom: 15px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* This makes the buttons look nice and big */
+        button {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #e4e6eb;
+        }
+
+        /* This makes the operator buttons orange */
+        .orange-btn {
+            background-color: #ff9500;
+            color: white;
+        }
+
+        /* This makes the clear button red */
+        .red-btn {
+            background-color: #ff3b30;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator-box">
+        <!-- The display screen -->
+        <input type="text" id="result" class="screen" value="" readonly>
+
+        <!-- The buttons -->
+        <div>
+            <button class="red-btn" onclick="clearScreen()">C</button>
+            <button class="orange-btn" onclick="press('/')">/</button>
+            <button class="orange-btn" onclick="press('*')">*</button>
+            <button class="orange-btn" onclick="press('-')">-</button>
+        </div>
+        <div>
+            <button onclick="press('7')">7</button>
+            <button onclick="press('8')">8</button>
+            <button onclick="press('9')">9</button>
+            <button class="orange-btn" onclick="press('+')">+</button>
+        </div>
+        <div>
+            <button onclick="press('4')">4</button>
+            <button onclick="press('5')">5</button>
+            <button onclick="press('6')">6</button>
+            <button class="orange-btn" onclick="calculate()">=</button>
+        </div>
+        <div>
+            <button onclick="press('1')">1</button>
+            <button onclick="press('2')">2</button>
+            <button onclick="press('3')">3</button>
+            <button onclick="press('0')">0</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. This function adds numbers or math symbols to the screen
+        function press(key) {
+             screen = document.getElementById("result");
+            screen.value = screen.value + key;
+        }
+
+        // 2. This function clears everything off the screen
+        function clearScreen() {
+            let screen = document.getElementById("result");
+            screen.value = "";
+        }
+
+        // 3. This function does the actual math when you press "="
+        function calculate() {
+            let screen = document.getElementById("result");
+
+            // eval() is a built-in tool that looks at text like "5+5" and changes it to 10
+            let finalAnswer = eval(screen.value);
+
+            screen.value = finalAnswer;
+        }
+    </script>
+
+</body>
+
+</html>
